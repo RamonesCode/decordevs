@@ -626,7 +626,7 @@
                 Recebemos sua mensagem e entraremos em contato em breve. Enquanto isso, você pode explorar mais sobre
                 nossos serviços ou ver alguns de nossos trabalhos.
             </p>
-            <button onclick="closeModal()"
+            <button onclick="closeModalAndScroll()"
                 class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
                 Fechar
             </button>
@@ -696,6 +696,12 @@
         function closeModal() {
             modal.classList.add("hidden");
         }
+        
+        function closeModalAndScroll() {
+            document.getElementById("thankYouModal").classList.add("hidden");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
     </script>
 
 </body>
