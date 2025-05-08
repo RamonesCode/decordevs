@@ -68,13 +68,28 @@
                     class="hidden md:block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Fale
                     Conosco</a>
 
-                <button class="md:hidden focus:outline-none">
-                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <!-- Botão Toggle Mobile -->
+                <div class="relative">
+                    <button id="menu-toggle" class="md:hidden focus:outline-none">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+
+                    <!-- Menu Mobile -->
+                    <div id="mobile-menu"
+                        class="md:hidden hidden mt-4 bg-white shadow-lg rounded-lg p-6 absolute right-0 top-12 z-50 w-64">
+                        <a href="#services" class="block py-2 text-gray-700 hover:text-purple-600">Serviços</a>
+                        <a href="#about" class="block py-2 text-gray-700 hover:text-purple-600">Sobre</a>
+                        <a href="#portfolio" class="block py-2 text-gray-700 hover:text-purple-600">Portfólio</a>
+                        <a href="#contact" class="block py-2 text-gray-700 hover:text-purple-600">Contato</a>
+                        <a href="#contact"
+                            class="block mt-4 text-center bg-purple-600 text-white rounded-full py-2 px-4 hover:bg-purple-700 transition">
+                            Fale Conosco
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -287,8 +302,8 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-2">E-commerce - Loja </h3>
                         <p class="text-gray-600 mb-4">Plataforma de vendas online com integração de pagamentos e gestão
                             de estoque.</p>
-                        <span
-                            class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Plataforma digital</span>
+                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Plataforma
+                            digital</span>
                     </div>
                 </div>
 
@@ -328,9 +343,9 @@
                 </p>
             </div> -->
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <!-- <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-filter backdrop-blur-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <!-- <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-filter backdrop-blur-sm">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center text-purple-800 font-bold mr-4">
@@ -353,8 +368,8 @@
                     </div>
                 </div> -->
 
-                <!-- Testimonial 2 -->
-                <!-- <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-filter backdrop-blur-sm">
+            <!-- Testimonial 2 -->
+            <!-- <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-filter backdrop-blur-sm">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center text-purple-800 font-bold mr-4">
@@ -377,8 +392,8 @@
                     </div>
                 </div> -->
 
-                <!-- Testimonial 3 -->
-                <!-- <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-filter backdrop-blur-sm">
+            <!-- Testimonial 3 -->
+            <!-- <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-filter backdrop-blur-sm">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center text-purple-800 font-bold mr-4">
@@ -626,8 +641,11 @@
         });
 
         // Mobile Menu Toggle (placeholder - would need actual implementation)
-        document.querySelector('header button').addEventListener('click', () => {
-            alert('Menu mobile seria implementado aqui');
+        const toggleButton = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        toggleButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
         // Form submission (placeholder)
