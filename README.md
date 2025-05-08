@@ -1,15 +1,14 @@
 # DecorDevs
-decor-devs/
-│
-├── index.html
-├── README.md
-├── /assets
-│   ├── /css
-│   │   └── style.css
-│   ├── /js
-│   │   └── main.js
-│   └── /img
-│       └── (imagens utilizadas)
-├── /libs
-│   └── (font-awesome ou libs locais)
-└── tailwind.config.js (se usar build local do Tailwind)
+
+Site institucional com serviços de desenvolvimento, criado com HTML5, TailwindCSS e JavaScript.
+
+## 📦 Tecnologias
+
+- HTML5
+- TailwindCSS (via CDN)
+- Font Awesome
+- JavaScript
+
+## 🔧 Como usar
+
+Abra `index.html` em qualquer navegador ou hospede em plataformas como Netlify/Vercel.
