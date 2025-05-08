@@ -493,7 +493,11 @@
                 </div>
 
                 <div class="lg:w-1/2">
-                    <form class="bg-gray-50 p-8 rounded-xl shadow-md">
+                    <form action="https://formspree.io/f/mnndvbqw" method="POST"
+                        class="bg-gray-50 p-8 rounded-xl shadow-md">
+                        <input type="hidden" name="_redirect" value="https://decordevs.com/obrigado.html">
+                        <input type="text" name="_honey" style="display:none">
+                        
                         <div class="mb-6">
                             <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
                             <input type="text" id="name"
@@ -648,12 +652,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Form submission (placeholder)
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Formulário enviado! Entraremos em contato em breve.');
-            e.target.reset();
-        });
     </script>
 </body>
 
