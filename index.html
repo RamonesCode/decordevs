@@ -495,34 +495,30 @@
                 <div class="lg:w-1/2">
                     <form action="https://formspree.io/f/mnndvbqw" method="POST"
                         class="bg-gray-50 p-8 rounded-xl shadow-md">
-                        <input type="hidden" name="_redirect" value="https://decordevs.com/obrigado.html">
                         <input type="text" name="_honey" style="display:none">
-                        
+
                         <div class="mb-6">
                             <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
-                            <input type="text" id="name"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="Seu nome completo">
+                            <input type="text" id="name" name="name" placeholder="Seu nome completo"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                         </div>
 
                         <div class="mb-6">
                             <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                            <input type="email" id="email"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="seu@email.com">
+                            <input type="email" id="email" name="email" placeholder="seu@email.com"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                         </div>
 
                         <div class="mb-6">
                             <label for="phone" class="block text-gray-700 font-medium mb-2">Telefone</label>
-                            <input type="tel" id="phone"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="(00) 00000-0000">
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                         </div>
 
                         <div class="mb-6">
                             <label for="service" class="block text-gray-700 font-medium mb-2">Serviço de
                                 interesse</label>
-                            <select id="service"
+                            <select id="service" name="service"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                                 <option value="">Selecione um serviço</option>
                                 <option value="landing-page">Criação de Landing Page</option>
@@ -535,9 +531,9 @@
 
                         <div class="mb-6">
                             <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
-                            <textarea id="message" rows="5"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="Descreva seu projeto ou dúvida..."></textarea>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Descreva seu projeto ou dúvida..."
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"></textarea>
                         </div>
 
                         <button type="submit"
@@ -622,6 +618,22 @@
         </div>
     </footer>
 
+    <!-- Modal de agradecimento (início) -->
+    <div id="thankYouModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-xl max-w-md text-center shadow-lg">
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">Muito Obrigado pelo contato!</h2>
+            <p class="text-gray-600 mb-6">
+                Recebemos sua mensagem e entraremos em contato em breve. Enquanto isso, você pode explorar mais sobre
+                nossos serviços ou ver alguns de nossos trabalhos.
+            </p>
+            <button onclick="closeModal()"
+                class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                Fechar
+            </button>
+        </div>
+    </div>
+    <!-- Modal de agradecimento (fim) -->
+
     <!-- Back to Top Button -->
     <button id="backToTop"
         class="fixed bottom-6 right-6 w-12 h-12 rounded-full gradient-bg text-white shadow-lg hidden">
@@ -651,8 +663,41 @@
         toggleButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
     </script>
+
+    <script>
+        const form = document.querySelector("form");
+        const modal = document.getElementById("thankYouModal");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const data = new FormData(form);
+            const action = form.getAttribute("action");
+
+            try {
+                const response = await fetch(action, {
+                    method: "POST",
+                    body: data,
+                    headers: { Accept: "application/json" },
+                });
+
+                if (response.ok) {
+                    form.reset();
+                    modal.classList.remove("hidden");
+                } else {
+                    alert("Erro ao enviar. Tente novamente.");
+                }
+            } catch (err) {
+                alert("Erro de conexão.");
+            }
+        });
+
+        function closeModal() {
+            modal.classList.add("hidden");
+        }
+    </script>
+
 </body>
 
 </html>
